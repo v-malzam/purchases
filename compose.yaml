@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  app:
+    deploy:
+      resources:
+        limits:
+          memory: 2gb
+    build: .
+    image: purchases-0.0.1-snapshot
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/
+      DB_USERNAME: postgres
+      DB_PASSWORD: 123
+    ports:
+      - "8080:8080"
+    networks:
+      purchases-net:
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+    networks:
+      purchases-net:
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+networks:
+  purchases-net:
+
+volumes:
+  pg-data:
