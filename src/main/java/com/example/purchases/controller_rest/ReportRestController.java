@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
@@ -27,17 +26,17 @@ public class ReportRestController {
     }
 
     @GetMapping("bestsellerLastMonth")
-    public LinkedHashMap<Integer, Product> bestsellerLastMonth() {
+    public Product bestsellerLastMonth() {
         return reportService.bestsellerLastMonth();
     }
 
     @GetMapping("bestbuyerLastYear")
-    public LinkedHashMap<Integer, Buyer> bestbuyerLastYear() {
+    public Buyer bestbuyerLastYear() {
         return reportService.bestbuyerLastYear();
     }
 
     @GetMapping("bestsellerFor18YearOld")
-    public LinkedHashMap<Integer, Product> bestsellerFor18YearOld() {
+    public Product bestsellerFor18YearOld() {
         return reportService.bestsellerFor18YearOld();
     }
 }
