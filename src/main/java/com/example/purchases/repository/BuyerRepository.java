@@ -16,5 +16,5 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
                     " GROUP BY buyer.id, buyer.name, buyer.lastname, buyer.age" +
                     " ORDER BY sum(count) DESC" +
                     " LIMIT 1")
-    Buyer bestBuyerLastYear(LocalDate lastYear);
+    Buyer bestBuyerLastYear(LocalDate startDate);
 }

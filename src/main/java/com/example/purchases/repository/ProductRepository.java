@@ -16,7 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                     " GROUP BY product.id, product.name" +
                     " ORDER BY sum(count) DESC" +
                     " LIMIT 1")
-    Product bestSellerLastMonth(LocalDate lastMonth);
+    Product bestSellerLastMonth(LocalDate startDate);
 
     @Query(nativeQuery = true, value =
             "SELECT product.id, product.name" +
@@ -29,3 +29,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                     " LIMIT 1")
     Product bestSellerFor18YearOld();
 }
+
+// С одной стороны "buyer.age = 18", это антипаттерн "Магическое число"
+// Но его устранение нарушит принцип KISS - не додумывать за заказчика, что ему реально нужно.
+// При сомнениях, лучше заказчика спрашивать. Но в рамках тестового задания это затруднено.
+// Решил оставить так. При необходимости, будет очень просто вынести этот параметр на любой уровень абстракции.
