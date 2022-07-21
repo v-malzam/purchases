@@ -1,0 +1,18 @@
+INSERT INTO product (id, name) VALUES (1, 'Телевизор');
+INSERT INTO product (id, name) VALUES (2, 'Смартфон');
+INSERT INTO product (id, name) VALUES (3, 'Соковыжималка');
+INSERT INTO product (id, name) VALUES (4, 'Наушники');
+INSERT INTO product (id, name) VALUES (5, 'Клавиатура');
+INSERT INTO buyer (id, name, lastname, age) VALUES (1, 'Иван', 'Петрович', 18);
+INSERT INTO buyer (id, name, lastname, age) VALUES (2, 'Сергей', 'Николаевич', 20);
+INSERT INTO buyer (id, name, lastname, age) VALUES (3, 'Елена', 'Сергеевна', 18);
+INSERT INTO buyer (id, name, lastname, age) VALUES (4, 'Наталья', 'Викторовна', 45);
+INSERT INTO buyer (id, name, lastname, age) VALUES (5, 'Николай', 'Станиславович', 50);
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (1, 2, 4, 1, 10.55, '21.07.2022');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (2, 2, 1, 3, 800.63, '15.07.2022');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (3, 3, 4, 1, 10.55, '14.07.2022');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (4, 3, 5, 5, 90.75, '20.06.2022');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (5, 4, 5, 1, 18.15, '18.06.2022');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (6, 5, 5, 1, 18.15, '10.06.2022');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (7, 1, 2, 5, 1002.80, '01.01.2021');
+INSERT INTO purchase (id, buyer_id, product_id, count, amount, date) VALUES (8, 1, 2, 5, 1002.80, '01.01.2021');
