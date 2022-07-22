@@ -3,7 +3,10 @@ package com.example.purchases.controller_rest;
 import com.example.purchases.model.Buyer;
 import com.example.purchases.model.Product;
 import com.example.purchases.model.Purchase;
-import com.example.purchases.service.ReportService;
+import com.example.purchases.service.ReportBestBuyerLastYearService;
+import com.example.purchases.service.ReportBestSellerFor18YearOldService;
+import com.example.purchases.service.ReportBestSellerLastMonthService;
+import com.example.purchases.service.ReportPurchasesLastWeekService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,29 +17,39 @@ import java.util.List;
 @RequestMapping("rest/report")
 public class ReportRestController {
 
-    private final ReportService reportService;
+    private final ReportPurchasesLastWeekService reportPurchasesLastWeekService;
+    private final ReportBestSellerLastMonthService reportBestSellerLastMonthService;
+    private final ReportBestBuyerLastYearService reportBestBuyerLastYearService;
+    private final ReportBestSellerFor18YearOldService reportBestSellerFor18YearOldService;
 
-    public ReportRestController(ReportService reportService) {
-        this.reportService = reportService;
+
+    public ReportRestController(ReportPurchasesLastWeekService reportPurchasesLastWeekService,
+                                ReportBestSellerLastMonthService reportBestSellerLastMonthService,
+                                ReportBestBuyerLastYearService reportBestBuyerLastYearService,
+                                ReportBestSellerFor18YearOldService reportBestSellerFor18YearOldService) {
+        this.reportPurchasesLastWeekService = reportPurchasesLastWeekService;
+        this.reportBestSellerLastMonthService = reportBestSellerLastMonthService;
+        this.reportBestBuyerLastYearService = reportBestBuyerLastYearService;
+        this.reportBestSellerFor18YearOldService = reportBestSellerFor18YearOldService;
     }
 
     @GetMapping("purchasesLastWeek")
     public List<Purchase> purchasesLastWeek() {
-        return reportService.purchasesLastWeek();
+        return reportPurchasesLastWeekService.purchasesLastWeek();
     }
 
-    @GetMapping("bestsellerLastMonth")
-    public List<Product> bestsellerLastMonth() {
-        return reportService.bestsellerLastMonth();
+    @GetMapping("bestSellerLastMonth")
+    public List<Product> bestSellerLastMonth() {
+        return reportBestSellerLastMonthService.bestSellerLastMonth();
     }
 
-    @GetMapping("bestbuyerLastYear")
-    public List<Buyer> bestbuyerLastYear() {
-        return reportService.bestbuyerLastYear();
+    @GetMapping("bestBuyerLastYear")
+    public List<Buyer> bestBuyerLastYear() {
+        return reportBestBuyerLastYearService.bestBuyerLastYear();
     }
 
-    @GetMapping("bestsellerFor18YearOld")
-    public List<Product> bestsellerFor18YearOld() {
-        return reportService.bestsellerFor18YearOld();
+    @GetMapping("bestSellerFor18YearOld")
+    public List<Product> bestSellerFor18YearOld() {
+        return reportBestSellerFor18YearOldService.bestSellerFor18YearOld();
     }
 }

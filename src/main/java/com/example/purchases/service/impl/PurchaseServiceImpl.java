@@ -1,7 +1,8 @@
-package com.example.purchases.service;
+package com.example.purchases.service.impl;
 
 import com.example.purchases.model.Purchase;
 import com.example.purchases.repository.PurchaseRepository;
+import com.example.purchases.service.PurchaseService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
