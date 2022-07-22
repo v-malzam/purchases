@@ -31,12 +31,14 @@ public class PurchaseRestController {
     }
 
     @PostMapping
+    //@PostMapping(consumes = MediaType.TEXT_XML_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Purchase add(@RequestBody Purchase purchase) {
         return purchaseService.create(purchase);
     }
 
     @PutMapping
+    //@PutMapping(consumes = MediaType.TEXT_XML_VALUE)
     public Purchase update(@RequestBody Purchase purchase) {
         return purchaseService.update(purchase);
     }

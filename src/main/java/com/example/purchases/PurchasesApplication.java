@@ -10,4 +10,10 @@ public class PurchasesApplication {
         SpringApplication.run(PurchasesApplication.class, args);
     }
 
+    /*@Bean
+    public HttpMessageConverter<Object> createXmlHttpMessageConverter() {
+
+        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+        return new MarshallingHttpMessageConverter(jaxb2Marshaller, jaxb2Marshaller);
+    }*/
 }
