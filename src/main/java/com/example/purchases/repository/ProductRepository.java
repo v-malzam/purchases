@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
@@ -16,7 +17,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                     " GROUP BY product.id, product.name" +
                     " ORDER BY sum(count) DESC" +
                     " LIMIT 1")
-    Product bestSellerLastMonth(LocalDate startDate);
+    List<Product> bestSellerLastMonth(LocalDate startDate);
 
     @Query(nativeQuery = true, value =
             "SELECT product.id, product.name" +
@@ -27,7 +28,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                     " GROUP BY product.id, product.name" +
                     " ORDER BY sum(count) DESC" +
                     " LIMIT 1")
-    Product bestSellerFor18YearOld();
+    List<Product> bestSellerFor18YearOld();
 }
 
 // С одной стороны "buyer.age = 18", это антипаттерн "Магическое число"

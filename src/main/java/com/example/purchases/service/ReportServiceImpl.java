@@ -31,19 +31,19 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public Product bestsellerLastMonth() {
+    public List<Product> bestsellerLastMonth() {
         LocalDate lastMonth = LocalDate.now().minusMonths(1L);
         return productRepository.bestSellerLastMonth(lastMonth);
     }
 
     @Override
-    public Buyer bestbuyerLastYear() {
+    public List<Buyer> bestbuyerLastYear() {
         LocalDate lastYear = LocalDate.now().minusYears(1L);
         return buyerRepository.bestBuyerLastYear(lastYear);
     }
 
     @Override
-    public Product bestsellerFor18YearOld() {
+    public List<Product> bestsellerFor18YearOld() {
         return productRepository.bestSellerFor18YearOld();
     }
 }

@@ -26,17 +26,17 @@ public class ReportRestController {
     }
 
     @GetMapping("bestsellerLastMonth")
-    public Product bestsellerLastMonth() {
+    public List<Product> bestsellerLastMonth() {
         return reportService.bestsellerLastMonth();
     }
 
     @GetMapping("bestbuyerLastYear")
-    public Buyer bestbuyerLastYear() {
+    public List<Buyer> bestbuyerLastYear() {
         return reportService.bestbuyerLastYear();
     }
 
     @GetMapping("bestsellerFor18YearOld")
-    public Product bestsellerFor18YearOld() {
+    public List<Product> bestsellerFor18YearOld() {
         return reportService.bestsellerFor18YearOld();
     }
 }

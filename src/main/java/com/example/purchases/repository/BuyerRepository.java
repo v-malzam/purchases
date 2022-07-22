@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
 
@@ -16,5 +17,5 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
                     " GROUP BY buyer.id, buyer.name, buyer.lastname, buyer.age" +
                     " ORDER BY sum(count) DESC" +
                     " LIMIT 1")
-    Buyer bestBuyerLastYear(LocalDate startDate);
+    List<Buyer> bestBuyerLastYear(LocalDate startDate);
 }

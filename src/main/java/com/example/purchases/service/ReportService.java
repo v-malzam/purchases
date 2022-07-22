@@ -10,11 +10,11 @@ public interface ReportService {
 
     List<Purchase> purchasesLastWeek();
 
-    Product bestsellerLastMonth();
+    List<Product> bestsellerLastMonth();
 
-    Buyer bestbuyerLastYear();
+    List<Buyer> bestbuyerLastYear();
 
-    Product bestsellerFor18YearOld();
+    List<Product> bestsellerFor18YearOld();
 }
 
 /*Дискуссионный вопрос - что делать с интерфейсом?
