@@ -31,9 +31,4 @@ public class Purchase {
     private Integer count;
     private BigDecimal amount;
     private LocalDate date;
-
-    // Необходимость переопределения ToString, Equals и HashCode в рамках этого задания - дискуссионная тема
-    // Читал о разных подходах. Интересны принятые у вас практики по этому вопросу для Entity-классов.
 }
-
-
