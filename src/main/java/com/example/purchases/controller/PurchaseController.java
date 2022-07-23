@@ -20,11 +20,10 @@ public class PurchaseController {
         this.purchaseService = purchaseService;
     }
 
-
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute(purchaseService.getAll());
-        return "purchases";
+        return "purchase/view";
     }
 
     @GetMapping("add")
@@ -37,7 +36,7 @@ public class PurchaseController {
     public String add(Purchase purchase, BindingResult result) {
         if (!result.hasErrors()) {
             purchaseService.create(purchase);
-            return "redirect:/purchases";
+            return "redirect:/purchase";
         } else {
             return "redirect:/purchase/add";
         }
@@ -53,7 +52,7 @@ public class PurchaseController {
     public String edit(Purchase purchase, BindingResult result) {
         if (!result.hasErrors()) {
             purchaseService.update(purchase);
-            return "redirect:/purchases";
+            return "redirect:/purchase";
         } else {
             return "redirect:/purchase/edit";
         }
@@ -62,6 +61,6 @@ public class PurchaseController {
     @GetMapping("delete/{id}")
     public String delete(@PathVariable int id) {
         purchaseService.deleteById(id);
-        return "redirect:/purchases";
+        return "redirect:/purchase";
     }
 }

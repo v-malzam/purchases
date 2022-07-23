@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Courses</title>
+    <th:block th:insert="fragments::head"></th:block>
+</head>
+
+<body>
+<div class="container">
+    <header th:insert="fragments::header"></header>
+    <div th:insert="fragments::menu_edit"></div>
+    <h2 th:text="---1"></h2>
+    <a th:href="@{/purchase/add}" th:text="---2"></a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th th:text="---3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="purchase: ${purchaseList}">
+            <td th:text="${purchase.name}"></td>
+            <td><a th:href="@{/purchase/edit/{id}(id=${purchase.id})}" th:text="изменить"></a></td>
+            <td><a th:href="@{/purchase/delete/{id}(id=${purchase.id})}" th:text="удалить"></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <footer th:insert="fragments::footer"></footer>
+</div>
+</body>
+</html>
