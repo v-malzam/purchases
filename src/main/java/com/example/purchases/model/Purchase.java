@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -18,6 +19,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@XmlRootElement
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
