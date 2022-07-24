@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>All Courses</title>
+    <title>Покупки</title>
     <th:block th:insert="fragments::head"></th:block>
 </head>
 
@@ -28,11 +28,11 @@
         <tbody>
         <tr th:each="purchase: ${purchaseList}">
             <td th:text="${purchase.buyer.name}"></td>
-            <td th:text="${purchase.buyer.getLastname}"></td>
+            <td th:text="${purchase.buyer.lastname}"></td>
             <td th:text="${purchase.buyer.age}"></td>
             <td th:text="${purchase.product.name}"></td>
             <td th:text="${purchase.count}"></td>
-            <td th:text="${purchase.getAmount()}"></td>
+            <td th:text="${purchase.amount}"></td>
             <td th:text="${purchase.date}"></td>
             <td><a th:href="@{/purchase/edit/{id}(id=${purchase.id})}">изменить</a></td>
             <td><a th:href="@{/purchase/delete/{id}(id=${purchase.id})}">удалить</a></td>

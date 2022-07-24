@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Course</title>
+    <title>Добавить покупку</title>
     <th:block th:insert="fragments::head"></th:block>
 </head>
 
 <body>
 <div class="container">
     <header th:insert="fragments::header"></header>
+    <div th:insert="fragments::menu_edit"></div>
     <h2>Добавить покупку</h2>
     <form method="post" th:action="@{/purchase/add}" th:object="${purchase}">
 

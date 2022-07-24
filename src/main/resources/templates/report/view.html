@@ -1,37 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>All Schedule lines</title>
+    <title>Отчеты</title>
     <th:block th:insert="fragments::head"></th:block>
 </head>
 
 <body>
 <div class="container">
     <header th:insert="fragments::header"></header>
-    <div th:insert="fragments::menu_view"></div>
-    <h2>scheduleLines.pageName</h2>
+    <div th:insert="fragments::menu_edit"></div>
+
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Дата</th>
-            <th>timeLessonPair</th>
-            <th>group</th>
-            <th>course</th>
-            <th>teacher</th>
-            <th>room</th>
+            <th>Имя и фамилия человека, совершившего больше всего покупок за полгода</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="scheduleLine: ${scheduleLineList}">
-            <td th:text="${scheduleLine.date}"></td>
-            <td th:text="${scheduleLine.lessonPair.pairStartTime}"></td>
-            <td th:text="${scheduleLine.group.name}"></td>
-            <td th:text="${scheduleLine.teacher.course.name}"></td>
-            <td th:text="${scheduleLine.teacher.firstName + ' ' + scheduleLine.teacher.lastName}"></td>
-            <td th:text="${scheduleLine.room.name}"></td>
+        <tr th:each="buyer: ${bestBuyerLastYear}">
+            <td th:text="${buyer.name + ' ' + buyer.lastname}"></td>
         </tr>
         </tbody>
     </table>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Cамый покупаемый товар за последний месяц</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${bestSellerLastMonth}">
+            <td th:text="${product.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Что чаще всего покупают люди в возрасте 18 лет</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${bestSellerFor18YearOld}">
+            <td th:text="${product.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h5>Cписок покупок за последнюю неделю</h5>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Имя покупателя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Продукт</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+            <th>Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="purchase: ${purchasesLastWeek}">
+            <td th:text="${purchase.buyer.name}"></td>
+            <td th:text="${purchase.buyer.lastname}"></td>
+            <td th:text="${purchase.buyer.age}"></td>
+            <td th:text="${purchase.product.name}"></td>
+            <td th:text="${purchase.count}"></td>
+            <td th:text="${purchase.amount}"></td>
+            <td th:text="${purchase.date}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+
     <footer th:insert="fragments::footer"></footer>
 </div>
 </body>

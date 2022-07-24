@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit Course</title>
+    <title>Изменить покупку</title>
     <th:block th:insert="fragments::head"></th:block>
 </head>
 
 <body>
 <div class="container">
     <header th:insert="fragments::header"></header>
+    <div th:insert="fragments::menu_edit"></div>
     <h2>Изменить покупку</h2>
     <form method="post" th:action="@{/purchase/edit}" th:object="${purchase}">
 
@@ -47,7 +48,7 @@
         <div class="form-group">
             <label for="purchase.date">Дата</label>
             <input class="form-control" id="purchase.date" required th:field="*{date}"
-                   th:placeholder="${purchase.date}" type="text">
+                   th:placeholder="${purchase.date}" type="date">
             <span style="color: red;" th:errors="*{date}" th:if="${#fields.hasErrors('date')}"></span>
         </div>
 
