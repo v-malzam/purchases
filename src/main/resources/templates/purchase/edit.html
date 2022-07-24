@@ -52,9 +52,11 @@
             <span style="color: red;" th:errors="*{date}" th:if="${#fields.hasErrors('date')}"></span>
         </div>
 
+        <p></p>
         <input class="btn btn-primary" type="submit" value="Ok">
     </form>
     <footer th:insert="fragments::footer"></footer>
 </div>
+<div th:insert="fragments::scriptForBootstrap"></div>
 </body>
 </html>
