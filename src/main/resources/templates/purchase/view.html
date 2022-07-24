@@ -9,19 +9,33 @@
 <div class="container">
     <header th:insert="fragments::header"></header>
     <div th:insert="fragments::menu_edit"></div>
-    <h2 th:text="---1"></h2>
-    <a th:href="@{/purchase/add}" th:text="---2"></a>
+    <h2>Покупки</h2>
+    <a th:href="@{/purchase/add}">Добавить покупку</a>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th th:text="---3"></th>
+            <th>Имя покупателя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Продукт</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+            <th>Дата</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="purchase: ${purchaseList}">
-            <td th:text="${purchase.name}"></td>
-            <td><a th:href="@{/purchase/edit/{id}(id=${purchase.id})}" th:text="изменить"></a></td>
-            <td><a th:href="@{/purchase/delete/{id}(id=${purchase.id})}" th:text="удалить"></a></td>
+            <td th:text="${purchase.buyer.name}"></td>
+            <td th:text="${purchase.buyer.getLastname}"></td>
+            <td th:text="${purchase.buyer.age}"></td>
+            <td th:text="${purchase.product.name}"></td>
+            <td th:text="${purchase.count}"></td>
+            <td th:text="${purchase.getAmount()}"></td>
+            <td th:text="${purchase.date}"></td>
+            <td><a th:href="@{/purchase/edit/{id}(id=${purchase.id})}">изменить</a></td>
+            <td><a th:href="@{/purchase/delete/{id}(id=${purchase.id})}">удалить</a></td>
         </tr>
         </tbody>
     </table>

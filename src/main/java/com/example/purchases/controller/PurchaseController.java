@@ -1,6 +1,8 @@
 package com.example.purchases.controller;
 
 import com.example.purchases.model.Purchase;
+import com.example.purchases.service.BuyerService;
+import com.example.purchases.service.ProductService;
 import com.example.purchases.service.PurchaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PurchaseController {
 
     private final PurchaseService purchaseService;
+    private final BuyerService buyerService;
+    private final ProductService productService;
 
-    public PurchaseController(PurchaseService purchaseService) {
+    public PurchaseController(PurchaseService purchaseService, BuyerService buyerService, ProductService productService) {
         this.purchaseService = purchaseService;
+        this.buyerService = buyerService;
+        this.productService = productService;
     }
 
     @GetMapping
@@ -28,12 +34,14 @@ public class PurchaseController {
 
     @GetMapping("add")
     public String add(Model model) {
-        model.addAttribute(new Purchase());
+        model.addAttribute(buyerService.getAll());
+        model.addAttribute(productService.getAll());
         return "purchase/add";
     }
 
     @PostMapping("add")
     public String add(Purchase purchase, BindingResult result) {
+        System.out.println("Purchase = " + purchase.toString());
         if (!result.hasErrors()) {
             purchaseService.create(purchase);
             return "redirect:/purchase";
@@ -45,6 +53,8 @@ public class PurchaseController {
     @GetMapping("edit/{id}")
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute(purchaseService.getById(id));
+        model.addAttribute(buyerService.getAll());
+        model.addAttribute(productService.getAll());
         return "purchase/edit";
     }
 

@@ -8,38 +8,40 @@
 <body>
 <div class="container">
     <header th:insert="fragments::header"></header>
-    <h2 th:text="Добавить покупку"></h2>
+    <h2>Добавить покупку</h2>
     <form method="post" th:action="@{/purchase/add}" th:object="${purchase}">
 
         <div class="form-group">
-            <label for="purchase.buyer" th:text="Покупатель"></label>
-            <input class="form-control" id="purchase.buyer" required th:field="*{buyer}"
-                   th:placeholder="${purchase.buyer}" type="text">
-            <span style="color: red;" th:errors="*{buyer}" th:if="${#fields.hasErrors('buyer')}"></span>
+            <label for="buyer.id">Покупатель</label>
+            <select class="form-control" id="buyer.id" name="buyer.id" required>
+                <option th:each="buyer: ${buyerList}"
+                        th:text="${buyer.name + ' ' + buyer.lastname}" th:value="${buyer.id}"></option>
+            </select>
         </div>
+
         <div class="form-group">
-            <label for="purchase.product" th:text="Продукт"></label>
-            <input class="form-control" id="purchase.product" required th:field="*{product}"
-                   th:placeholder="${purchase.product}" type="text">
-            <span style="color: red;" th:errors="*{product}" th:if="${#fields.hasErrors('product')}"></span>
+            <label for="product.id">Продукт</label>
+            <select class="form-control" id="product.id" name="product.id" required>
+                <option th:each="product: ${productList}"
+                        th:text="${product.name}" th:value="${product.id}"></option>
+            </select>
         </div>
+
         <div class="form-group">
-            <label for="purchase.count" th:text="Количество"></label>
-            <input class="form-control" id="purchase.count" required th:field="*{count}"
-                   th:placeholder="${purchase.count}" type="text">
-            <span style="color: red;" th:errors="*{count}" th:if="${#fields.hasErrors('count')}"></span>
+            <label for="count">Количество</label>
+            <input class="form-control" id="count" name="count" required type="text">
+            <!--<span style="color: red;" th:errors="*{count}" th:if="${#fields.hasErrors('count')}"></span>-->
         </div>
+
         <div class="form-group">
-            <label for="purchase.amount" th:text="Стоимость"></label>
-            <input class="form-control" id="purchase.amount" required th:field="*{amount}"
-                   th:placeholder="${purchase.amount}" type="text">
-            <span style="color: red;" th:errors="*{amount}" th:if="${#fields.hasErrors('amount')}"></span>
+            <label for="amount">Стоимость</label>
+            <input class="form-control" id="amount" name="amount" required type="text">
+            <!--<span style="color: red;" th:errors="*{amount}" th:if="${#fields.hasErrors('amount')}"></span>-->
         </div>
+
         <div class="form-group">
-            <label for="purchase.date" th:text="Дата"></label>
-            <input class="form-control" id="purchase.date" required th:field="*{date}"
-                   th:placeholder="${purchase.date}" type="text">
-            <span style="color: red;" th:errors="*{date}" th:if="${#fields.hasErrors('date')}"></span>
+            <label for="date">Дата</label>
+            <input class="form-control" id="date" name="date" required type="date">
         </div>
 
         <input class="btn btn-primary" type="submit" value="Create">

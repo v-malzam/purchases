@@ -24,36 +24,34 @@
 </block>
 
 <header th:fragment="header">
-    <h2 th:text="-//-1"></h2>
+    <h2>Покупки и отчеты</h2>
 </header>
 
 <ul class="nav nav-pills" th:fragment="menu_login">
     <li class="nav-item">
-        <a class="nav-link active" href="/index" th:text="Главная"></a>
+        <a class="nav-link active" href="/index">Главная</a>
     </li>
 </ul>
 
 <ul class="nav nav-pills" th:fragment="menu_edit">
     <li class="nav-item">
-        <a class="nav-link active" href="/index" th:text="Главная"></a>
+        <a class="nav-link active" href="/">Главная</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/purchase" th:text="-//-2"></a>
+        <a class="nav-link active" href="/purchase">Покупки</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/report" th:text="-//-3"></a>
+        <a class="nav-link active" href="/report">Отчеты</a>
     </li>
 </ul>
 
 <footer th:fragment="footer">
     <p></p>
     <p></p>
-    Copyright ©
-    <time datetime="2022">2022</time>
-    <span sec:authorize="isAuthenticated()">
+    <!--<span sec:authorize="isAuthenticated()">
                 | Logged user: <span sec:authentication="name"></span>
                 | Roles: <span sec:authentication="principal.authorities"></span>
-    </span>
+    </span>-->
 </footer>
 
 </body>

@@ -12,11 +12,12 @@
         <header class="col-8" th:insert="fragments::header"></header>
     </div>
 
-    <span sec:authorize="isAnonymous()" th:insert="fragments::menu_edit"></span>
+    <span th:insert="fragments::menu_edit"></span>
     <!--<span sec:authorize="isAnonymous()" th:insert="fragments::menu_login"></span>-->
-    <span sec:authorize="hasRole('EDITOR')" th:insert="fragments::menu_edit"></span>
+    <!--<span sec:authorize="hasRole('EDITOR')" th:insert="fragments::menu_edit"></span>-->
 
-    <form method="post" sec:authorize="isAnonymous()" th:action="@{/login}">
+    <!--<form method="post" sec:authorize="isAnonymous()" th:action="@{/login}">-->
+    <form method="post" th:action="@{/login}">
         <fieldset>
             <h2>Please Sign In</h2>
             <div th:if="${param.error}">
@@ -36,15 +37,15 @@
                 </label>
             </div>
 
-            <button class="btn btn-primary" type="submit">Sign In</button>
+            <!--<button class="btn btn-primary" type="submit">Sign In</button>-->
 
         </fieldset>
     </form>
 
     <p></p>
-    <form method="post" sec:authorize="isAuthenticated()" th:action="@{/logout}">
+    <!--<form method="post" sec:authorize="isAuthenticated()" th:action="@{/logout}">
         <button class="btn btn-primary" type="submit">Sign Out</button>
-    </form>
+    </form>-->
 
     <footer th:insert="fragments::footer"></footer>
 </div>
