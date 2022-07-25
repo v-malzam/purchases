@@ -42,12 +42,8 @@ public class PurchaseController {
     @PostMapping("add")
     public String add(Purchase purchase, BindingResult result) {
         System.out.println("Purchase = " + purchase.toString());
-        if (!result.hasErrors()) {
             purchaseService.create(purchase);
             return "redirect:/purchase";
-        } else {
-            return "redirect:/purchase/add";
-        }
     }
 
     @GetMapping("edit/{id}")
@@ -60,12 +56,8 @@ public class PurchaseController {
 
     @PostMapping("edit")
     public String edit(Purchase purchase, BindingResult result) {
-        if (!result.hasErrors()) {
             purchaseService.update(purchase);
             return "redirect:/purchase";
-        } else {
-            return "redirect:/purchase/edit";
-        }
     }
 
     @GetMapping("delete/{id}")
