@@ -8,13 +8,14 @@ import jakarta.xml.bind.annotation.XmlType;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PurchaseType", propOrder = {
-    "buyer",
-    "product",
-    "count",
-    "amount",
-    "date"
+        "buyer",
+        "product",
+        "count",
+        "amount",
+        "date"
 })
 public class PurchaseType {
 

@@ -41,9 +41,8 @@ public class PurchaseController {
 
     @PostMapping("add")
     public String add(Purchase purchase, BindingResult result) {
-        System.out.println("Purchase = " + purchase.toString());
-            purchaseService.create(purchase);
-            return "redirect:/purchase";
+        purchaseService.create(purchase);
+        return "redirect:/purchase";
     }
 
     @GetMapping("edit/{id}")
@@ -56,8 +55,8 @@ public class PurchaseController {
 
     @PostMapping("edit")
     public String edit(Purchase purchase, BindingResult result) {
-            purchaseService.update(purchase);
-            return "redirect:/purchase";
+        purchaseService.update(purchase);
+        return "redirect:/purchase";
     }
 
     @GetMapping("delete/{id}")
@@ -65,4 +64,5 @@ public class PurchaseController {
         purchaseService.deleteById(id);
         return "redirect:/purchase";
     }
+
 }

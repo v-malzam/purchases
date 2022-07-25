@@ -36,4 +36,5 @@ public class ReportController {
         model.addAttribute("purchasesLastWeek", reportPurchasesLastWeekService.purchasesLastWeek());
         return "report/view";
     }
+
 }

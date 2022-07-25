@@ -20,16 +20,16 @@
         <div class="form-group">
             <label for="buyer.id">Покупатель</label>
             <select class="form-control" id="buyer.id" name="buyer.id" required>
-                <option th:each="buyer : ${buyerList}" th:text="${buyer.name + ' ' + buyer.lastname}"
-                        th:value="${buyer.id}" th:selected="${buyer.id == purchase.buyer.id}">
+                <option th:each="buyer : ${buyerList}" th:selected="${buyer.id == purchase.buyer.id}"
+                        th:text="${buyer.name + ' ' + buyer.lastname}" th:value="${buyer.id}">
                 </option>
             </select>
         </div>
         <div class="form-group">
             <label for="product.id">Продукт</label>
             <select class="form-control" id="product.id" name="product.id" required>
-                <option th:each="product : ${productList}" th:text="${product.name}"
-                        th:value="${product.id}" th:selected="${product.id == purchase.product.id}">
+                <option th:each="product : ${productList}" th:selected="${product.id == purchase.product.id}"
+                        th:text="${product.name}" th:value="${product.id}">
                 </option>
             </select>
         </div>
