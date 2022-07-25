@@ -23,12 +23,6 @@
     <h2>Покупки и отчеты</h2>
 </header>
 
-<ul class="nav nav-pills" th:fragment="menu_login">
-    <li class="nav-item">
-        <a class="nav-link active" href="/index">Главная</a>
-    </li>
-</ul>
-
 <ul class="nav nav-pills" th:fragment="menu_edit">
     <li class="nav-item">
         <a class="nav-link active" href="/">Главная</a>
@@ -44,10 +38,10 @@
 <footer th:fragment="footer">
     <p></p>
     <p></p>
-    <!--<span sec:authorize="isAuthenticated()">
-                | Logged user: <span sec:authentication="name"></span>
-                | Roles: <span sec:authentication="principal.authorities"></span>
-    </span>-->
+    <span sec:authorize="isAuthenticated()">
+                User: <span sec:authentication="name"></span><br>
+                Role: <span sec:authentication="principal.authorities"></span>
+    </span>
 </footer>
 
 </body>

@@ -8,10 +8,8 @@
 <body>
 
 <div class="container">
-    <div class="row justify-content-between">
-        <header class="col-8" th:insert="fragments::header"></header>
-    </div>
-    <span th:insert="fragments::menu_edit"></span>
+    <header th:insert="fragments::header"></header>
+    <div th:insert="fragments::menu_edit"></div>
     <p></p>
     <form method="post" th:action="@{/logout}">
         <button class="btn btn-primary" type="submit">Sign Out</button>
