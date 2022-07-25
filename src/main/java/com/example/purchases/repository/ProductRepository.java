@@ -15,8 +15,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                     " JOIN product ON (purchase.product_id = product.id)" +
                     " WHERE date > ?1" +
                     " GROUP BY product.id, product.name" +
-                    " ORDER BY sum(count) DESC" +
-                    " LIMIT 1")
+                    " HAVING sum(purchase.count) =" +
+                        " (SELECT  max(sum)" +
+                        " FROM" +
+                            " (SELECT sum(purchase.count)" +
+                            " FROM purchase" +
+                            " JOIN product ON (purchase.product_id = product.id)" +
+                            " WHERE date > ?1" +
+                            " GROUP BY product.id, product.name) AS D)")
     List<Product> bestSellerLastMonth(LocalDate startDate);
 
     @Query(nativeQuery = true, value =
@@ -26,12 +32,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                     " JOIN product ON (purchase.product_id = product.id)" +
                     " WHERE buyer.age = 18" +
                     " GROUP BY product.id, product.name" +
-                    " ORDER BY sum(count) DESC" +
-                    " LIMIT 1")
+                    " HAVING sum(purchase.count) =" +
+                        " (SELECT  max(sum)" +
+                        " FROM" +
+                            " (SELECT sum(purchase.count) FROM purchase" +
+                            " JOIN buyer ON (purchase.buyer_id = buyer.id)" +
+                            " JOIN product ON (purchase.product_id = product.id)" +
+                            " WHERE buyer.age = 18" +
+                            " GROUP BY product.id, product.name ) AS D)")
     List<Product> bestSellerFor18YearOld();
 }
-
-// С одной стороны "buyer.age = 18", это антипаттерн "Магическое число"
-// Но его устранение нарушит принцип KISS - не додумывать за заказчика, что ему реально нужно.
-// При сомнениях, лучше заказчика спрашивать. Но в рамках тестового задания это затруднено.
-// Решил оставить так. При необходимости, будет очень просто вынести этот параметр на любой уровень абстракции.

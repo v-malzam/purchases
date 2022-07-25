@@ -15,7 +15,13 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
                     " JOIN buyer ON (purchase.buyer_id = buyer.id)" +
                     " WHERE date > ?1" +
                     " GROUP BY buyer.id, buyer.name, buyer.lastname, buyer.age" +
-                    " ORDER BY sum(count) DESC" +
-                    " LIMIT 1")
+                    " HAVING sum(purchase.count) =" +
+                        " (SELECT  max(sum)" +
+                        " FROM" +
+                            " (SELECT sum(purchase.count)" +
+                            " FROM purchase" +
+                            " JOIN buyer ON (purchase.buyer_id = buyer.id)" +
+                            " WHERE date > ?1" +
+                            " GROUP BY buyer.id, buyer.name, buyer.lastname, buyer.age) AS D)")
     List<Buyer> bestBuyerLastYear(LocalDate startDate);
 }
