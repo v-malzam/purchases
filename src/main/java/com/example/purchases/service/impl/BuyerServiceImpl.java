@@ -25,23 +25,4 @@ public class BuyerServiceImpl implements BuyerService {
         return buyerRepository.findAll();
     }
 
-    @Override
-    public Buyer getById(int id) {
-        return buyerRepository.findById(id).get();
-    }
-
-    @Override
-    public Buyer create(Buyer buyer) {
-        return buyerRepository.save(buyer);
-    }
-
-    @Override
-    public Buyer update(Buyer buyer) {
-        return buyerRepository.save(buyer);
-    }
-
-    @Override
-    public void deleteById(int id) {
-        buyerRepository.deleteById(id);
-    }
 }
