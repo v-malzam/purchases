@@ -1,9 +1,6 @@
 package com.example.purchases.controller;
 
-import com.example.purchases.service.ReportBestBuyerLastYearService;
-import com.example.purchases.service.ReportBestSellerFor18YearOldService;
-import com.example.purchases.service.ReportBestSellerLastMonthService;
-import com.example.purchases.service.ReportPurchasesLastWeekService;
+import com.example.purchases.service.ReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,27 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("report")
 public class ReportController {
 
-    private final ReportBestBuyerLastYearService reportBestBuyerLastYearService;
-    private final ReportBestSellerLastMonthService reportBestSellerLastMonthService;
-    private final ReportBestSellerFor18YearOldService reportBestSellerFor18YearOldService;
-    private final ReportPurchasesLastWeekService reportPurchasesLastWeekService;
+    private final ReportService reportService;
 
-    public ReportController(ReportBestBuyerLastYearService reportBestBuyerLastYearService,
-                            ReportBestSellerLastMonthService reportBestSellerLastMonthService,
-                            ReportBestSellerFor18YearOldService reportBestSellerFor18YearOldService,
-                            ReportPurchasesLastWeekService reportPurchasesLastWeekService) {
-        this.reportBestBuyerLastYearService = reportBestBuyerLastYearService;
-        this.reportBestSellerLastMonthService = reportBestSellerLastMonthService;
-        this.reportBestSellerFor18YearOldService = reportBestSellerFor18YearOldService;
-        this.reportPurchasesLastWeekService = reportPurchasesLastWeekService;
+    public ReportController(ReportService reportService) {
+        this.reportService = reportService;
     }
 
     @GetMapping
     public String report(Model model) {
-        model.addAttribute("bestBuyerLastYear", reportBestBuyerLastYearService.bestBuyerLastYear());
-        model.addAttribute("bestSellerLastMonth", reportBestSellerLastMonthService.bestSellerLastMonth());
-        model.addAttribute("bestSellerFor18YearOld", reportBestSellerFor18YearOldService.bestSellerFor18YearOld());
-        model.addAttribute("purchasesLastWeek", reportPurchasesLastWeekService.purchasesLastWeek());
+        model.addAttribute("bestBuyerLastYear", reportService.bestBuyerLastYear());
+        model.addAttribute("bestSellerLastMonth", reportService.bestSellerLastMonth());
+        model.addAttribute("bestSellerFor18YearOld", reportService.bestSellerFor18YearOld());
+        model.addAttribute("purchasesLastWeek", reportService.purchasesLastWeek());
         return "report/view";
     }
 

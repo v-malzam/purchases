@@ -19,7 +19,7 @@ public class Purchases {
 
     public List<PurchaseType> getPurchase() {
         if (purchase == null) {
-            purchase = new ArrayList<PurchaseType>();
+            purchase = new ArrayList<>();
         }
         return this.purchase;
     }
