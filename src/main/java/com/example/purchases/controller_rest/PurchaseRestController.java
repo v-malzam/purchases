@@ -4,7 +4,6 @@ import com.example.purchases.model.Purchase;
 import com.example.purchases.model.PurchaseList;
 import com.example.purchases.service.PurchaseService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,23 +24,25 @@ public class PurchaseRestController {
         this.purchaseService = purchaseService;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(produces = {"text/xml", "application/xml"})
     public PurchaseList getAll() {
         return new PurchaseList(purchaseService.getAll());
     }
 
-    @GetMapping(path = "{id}", produces = MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(path = "{id}", produces = {"text/xml", "application/xml"})
     public Purchase getById(@PathVariable Integer id) {
         return purchaseService.getById(id);
     }
 
-    @PostMapping(consumes = MediaType.TEXT_XML_VALUE, produces = MediaType.TEXT_XML_VALUE)
+    @PostMapping(consumes = {"text/xml", "application/xml"},
+            produces = {"text/xml", "application/xml"})
     @ResponseStatus(HttpStatus.CREATED)
     public Purchase add(@RequestBody Purchase purchase) {
         return purchaseService.create(purchase);
     }
 
-    @PutMapping(consumes = MediaType.TEXT_XML_VALUE, produces = MediaType.TEXT_XML_VALUE)
+    @PutMapping(consumes = {"text/xml", "application/xml"},
+            produces = {"text/xml", "application/xml"})
     public Purchase update(@RequestBody Purchase purchase) {
         return purchaseService.update(purchase);
     }
