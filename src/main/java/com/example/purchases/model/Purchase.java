@@ -16,12 +16,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@Entity
 @XmlRootElement
 public class Purchase {
     @Id
@@ -33,6 +33,6 @@ public class Purchase {
     private Product product;
     private Integer count;
     private BigDecimal amount;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 }
