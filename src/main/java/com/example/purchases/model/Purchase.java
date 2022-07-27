@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,5 +33,6 @@ public class Purchase {
     private Product product;
     private Integer count;
     private BigDecimal amount;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 }
