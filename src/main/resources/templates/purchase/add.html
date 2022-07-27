@@ -10,7 +10,7 @@
     <header th:insert="fragments::header"></header>
     <div th:insert="fragments::menu_edit"></div>
     <h2>Добавить покупку</h2>
-    <form method="post" th:action="@{/purchase/add}" th:object="${purchase}">
+    <form method="post" th:action="@{/purchase/add-save}" th:object="${purchase}">
 
         <div class="form-group">
             <label for="buyer.id">Покупатель</label>

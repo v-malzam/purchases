@@ -32,29 +32,29 @@ public class PurchaseController {
         return "purchase/view";
     }
 
-    @GetMapping("add")
-    public String add(Model model) {
+    @GetMapping("add-get-view")
+    public String addGetView(Model model) {
         model.addAttribute(buyerService.getAll());
         model.addAttribute(productService.getAll());
         return "purchase/add";
     }
 
-    @PostMapping("add")
-    public String add(Purchase purchase, BindingResult result) {
+    @PostMapping("add-save")
+    public String addSave(Purchase purchase, BindingResult result) {
         purchaseService.create(purchase);
         return "redirect:/purchase";
     }
 
-    @GetMapping("edit/{id}")
-    public String edit(@PathVariable int id, Model model) {
+    @GetMapping("edit-get-view/{id}")
+    public String editGetView(@PathVariable int id, Model model) {
         model.addAttribute(purchaseService.getById(id));
         model.addAttribute(buyerService.getAll());
         model.addAttribute(productService.getAll());
         return "purchase/edit";
     }
 
-    @PostMapping("edit")
-    public String edit(Purchase purchase, BindingResult result) {
+    @PostMapping("edit-save")
+    public String editSave(Purchase purchase, BindingResult result) {
         purchaseService.update(purchase);
         return "redirect:/purchase";
     }

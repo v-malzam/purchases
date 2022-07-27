@@ -10,7 +10,7 @@
     <header th:insert="fragments::header"></header>
     <div th:insert="fragments::menu_edit"></div>
     <h2>Покупки</h2>
-    <a th:href="@{/purchase/add}">Добавить покупку</a>
+    <a th:href="@{/purchase/add-get-view}">Добавить покупку</a>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -34,7 +34,7 @@
             <td th:text="${purchase.count}"></td>
             <td th:text="${purchase.amount}"></td>
             <td th:text="${purchase.date}"></td>
-            <td><a th:href="@{/purchase/edit/{id}(id=${purchase.id})}">изменить</a></td>
+            <td><a th:href="@{/purchase/edit-get-view/{id}(id=${purchase.id})}">изменить</a></td>
             <td><a th:href="@{/purchase/delete/{id}(id=${purchase.id})}">удалить</a></td>
         </tr>
         </tbody>
