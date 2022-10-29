@@ -33,7 +33,7 @@ public class PurchaseController {
     }
 
     @GetMapping("add-get-view")
-    public String addGetView(Model model) {
+    public String getAddView(Model model) {
         model.addAttribute(buyerService.getAll());
         model.addAttribute(productService.getAll());
         return "purchase/add";
